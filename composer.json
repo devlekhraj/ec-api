@@ -1,0 +1,17 @@
+{
+    "name": "devlekh/admin",
+    "description": "Local admin package for Admin Chronicle.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Admin\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Admin\\AdminServiceProvider"
+            ]
+        }
+    }
+}
