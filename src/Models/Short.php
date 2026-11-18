@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Admin\Models;
 
 use App\Support\Eloquent\BaseModel;
-use App\Traits\HasAuditFields;
+use Admin\Traits\HasAuditFields;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

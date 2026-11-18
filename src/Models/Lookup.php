@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Admin\Models;
 
 use Admin\Models\User;
-use App\Traits\HasAuditFields;
+use Admin\Traits\HasAuditFields;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

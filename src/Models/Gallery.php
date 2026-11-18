@@ -34,6 +34,7 @@ final class Gallery extends BaseModel
         'created_by_id',
         'filename',
         'filepath',
+        'storage_disk',
         'mime_type',
         'file_size',
         'height',
@@ -80,7 +81,7 @@ final class Gallery extends BaseModel
      */
     public function getUrl(string $size = self::SIZE_DEFAULT): string
     {
-        $disk = (string) config('filesystems.default', 'public');
+        $disk = (string) ($this->storage_disk ?: config('filesystems.image_fallback_disk', 'public'));
 
         /** @var \Illuminate\Filesystem\FilesystemAdapter $storage */
         $storage = Storage::disk($disk);

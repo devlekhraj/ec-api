@@ -100,19 +100,20 @@ final class ImageController extends Controller
             return response()->file($fallback, ['Content-Type' => $fallbackMimeType]);
         }
 
-        $disk         = (string) config('filesystems.default', 'public');
+        $disk         = (string) ($file->storage_disk ?: config('filesystems.image_fallback_disk', 'public'));
         $relativePath = ltrim((string) $file->filepath, '/');
 
         /** @var \Illuminate\Filesystem\FilesystemAdapter $storage */
         $storage  = Storage::disk($disk);
-        $filePath = $storage->path($relativePath);
 
-        if (! is_string($filePath) || ! file_exists($filePath)) {
+        if (! $storage->exists($relativePath)) {
             return response()->file($fallback, ['Content-Type' => $fallbackMimeType]);
         }
 
-        $mimeType = @mime_content_type($filePath) ?: 'application/octet-stream';
-
-        return response()->file($filePath, ['Content-Type' => $mimeType]);
+        try {
+            return $storage->response($relativePath);
+        } catch (\Throwable) {
+            return response()->file($fallback, ['Content-Type' => $fallbackMimeType]);
+        }
     }
 }

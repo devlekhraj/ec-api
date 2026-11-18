@@ -6,7 +6,7 @@ namespace Admin\Models;
 
 use Admin\Models\Post;
 use Admin\Traits\HasSections;
-use App\Traits\HasAuditFields;
+use Admin\Traits\HasAuditFields;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
